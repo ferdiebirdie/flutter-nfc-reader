@@ -94,8 +94,8 @@ extension SwiftFlutterNfcReaderPlugin : NFCNDEFReaderSessionDelegate {
         guard let payload = message.records.first else { return }
         
         print(payload.identifier as NSData)
-        let serialData = payload.identifier as NSData
-        let serial = String(decoding: serialData, as: UTF8.self)
+        let serialData = (payload.identifier as NSData) as Data?
+        let serial = String(decoding: serialData , as: UTF8.self)
         
         // Start Package
         
